@@ -10,11 +10,20 @@ import { Product } from './../models/product';
 })
 export class ProductsListComponent implements OnInit {
   products: Product[];
+  result: string;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data=>this.products=data);
+  }
+
+  loadProductsList(): void{
+    this.productService.getProducts().subscribe(data=>this.products=data);
+  }
+
+  deleteProduct(prodId){
+     this.productService.deleteProductById(prodId).subscribe(data=>this.result=data.msg);
   }
 
 }

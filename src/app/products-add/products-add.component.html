@@ -1,0 +1,34 @@
+<div class="container">
+    <form [formGroup]="productRef" (ngSubmit)="storeProductDetails()">
+        <label>Product Code</label>
+        <input type="text" formControlName="code"/><br/>
+        <label>Product Name</label>
+        <input type="text" formControlName="name"/><br/>
+        <label>Product Details</label>
+        <input type="text" formControlName="details"/><br/>
+        <label>Product Image</label>
+        <input type="text" formControlName="image"/><br/>
+        <label>Product Price</label>
+        <input type="text" formControlName="price"/><br/>
+        <!--
+        <select formControlName="company">
+     
+            <option *ngFor="let company of companies;">{{company.name}}</option>
+            [(ngModel)]="product.company"
+        </select>
+        -->
+        
+        <select class="selectpicker dropdown form-control" 
+                        formControlName="company" data-live-search="true">
+                        <option *ngFor="let company of companies" [value]="company._id">{{company.name}}</option>
+        </select>
+        
+        <br/>
+        
+        <div class="col text-center">
+            <input type="submit" class="btn btn-secondary" value="Add">
+        </div>
+        
+    </form>
+    {{result}}
+</div>

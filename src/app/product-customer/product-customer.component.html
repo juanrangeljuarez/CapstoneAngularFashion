@@ -19,15 +19,10 @@
                     <img src="assets/images/{{product.image}}" width="250" height="100">
                 </td>
                 <td>
-                    <input class="btn btn-secondary" type="button" value="Delete" (click)="deleteProduct(product._id);this.loadProductsList();">
-                    <input class="btn btn-secondary" type="button" value="Details" [routerLink]="['/products-details', { id:product._id }]">
-                    <input class="btn btn-secondary" type="button" value="Update" [routerLink]="['/products-update', { id:product._id }]">                       
+                    <input class="btn btn-secondary" type="button" value="Add to Cart" [routerLink]="['/cart', { id:product._id }]">                  
               </td>
             </tr>
         </tbody>
     </table>
-    <div class="col text-center">
-        <button type="button" class="btn btn-secondary" [routerLink]="['/products-add']">Add Product</button>
-    </div>
-    {{result}}
 </div>
+

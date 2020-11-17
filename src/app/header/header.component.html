@@ -16,15 +16,25 @@
           </li>
         </ng-container>
         <ng-container *ngIf="auth.isAuthenticated()">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/products-list']">Manage Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/services']">Services</a>
-          </li>
+              <ng-container *ngIf="auth.getAdmin()">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/products-list']">Manage Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
+                </li>
+              </ng-container>
+              <ng-container *ngIf="!auth.getAdmin()">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/products-customer']">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/cart']">Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/services']">Services</a>
+                </li>
+              </ng-container>
           <li class="nav-item">
             <a class="nav-link">
               {{ auth.getUsername() }}

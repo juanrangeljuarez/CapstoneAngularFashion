@@ -19,6 +19,7 @@ export class AuthService {
 
   private uriseg = 'http://localhost:5000/api/users';
   private decodedToken;
+  private isAdmin: boolean = false;
 
   constructor(private http: HttpClient) {
     this.decodedToken = JSON.parse(localStorage.getItem('auth_meta')) || new DecodedToken();
@@ -56,5 +57,14 @@ export class AuthService {
 
   public getUsername(): string {
     return this.decodedToken.username;
+  }
+
+  public setAdmin(isAdminValue): void{
+    this.isAdmin = isAdminValue;
+  }
+
+  public getAdmin(): boolean{
+   // console.log('Admin is ' + this.isAdmin);
+    return this.isAdmin;
   }
 }

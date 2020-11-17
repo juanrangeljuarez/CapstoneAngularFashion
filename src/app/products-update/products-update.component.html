@@ -1,0 +1,31 @@
+<div class="container">
+    <div *ngFor="let p of product">
+        <form [formGroup]="productRef" (ngSubmit)="updateProduct(p._id)">
+            <div class="text-center" style="margin-top: 5%;">
+                <label><b>Currect Code: </b></label>{{p.code}}<br/>
+                <label><b>New Code: </b></label><input type="text" formControlName="code"/><br/>  
+            </div>
+            <div class="text-center" style="margin-top: 5%;">
+                <label><b>Current Name: </b></label>{{p.name}}<br/>
+                <label><b>New Name: </b></label><input type="text" formControlName="name"/><br/>  
+            </div>
+            <div class="text-center" style="margin-top: 5%;">
+                <label><b>Current Details: </b></label>{{p.details}}<br/>
+                <label><b>New Details: </b></label><input type="text" formControlName="details"/><br/>  
+            </div>
+            <div class="text-center" style="margin-top: 5%;">
+                <label><b>Current Price: </b>$</label>{{p.price}}<br/>
+                <label><b>New Price: </b></label><input type="text" formControlName="price"/><br/>  
+            </div>
+            <div class="text-center" style="margin-top: 5%;">
+                <label><b>Current Image: </b>$</label>{{p.image}}<br/>
+                <label><b>New image: </b></label><input type="text" formControlName="image"/><br/>  
+            </div>  
+            <br/>
+            <div class="col text-center">
+                <input type="submit" class="btn btn-secondary" value="Update Product">
+            </div>          
+        </form>
+    </div>
+    {{result}}
+</div>

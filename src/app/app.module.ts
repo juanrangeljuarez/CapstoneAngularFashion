@@ -14,6 +14,11 @@ import { CompaniesListComponent } from './companies-list/companies-list.componen
 import { CompaniesAddComponent } from './companies-add/companies-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsListComponent } from './products-list/products-list.component';
+import { ProductsAddComponent } from './products-add/products-add.component';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
+import { ProductsUpdateComponent } from './products-update/products-update.component';
+import { CartComponent } from './cart/cart.component';
+import { ProductCustomerComponent } from './product-customer/product-customer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { ProductsListComponent } from './products-list/products-list.component';
     ServicesComponent,
     CompaniesListComponent,
     CompaniesAddComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    ProductsAddComponent,
+    ProductsDetailsComponent,
+    ProductsUpdateComponent,
+    CartComponent,
+    ProductCustomerComponent
   ],
   imports: [
     BrowserModule,
