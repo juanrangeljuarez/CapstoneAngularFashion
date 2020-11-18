@@ -56,7 +56,6 @@ exports.UpdateProductInfo = (req,res)=> {       //{pid:100,pname:"TV 65 inch",pr
     Product.update({_id:updateId},{$set:{code:updateCode,name:updateName, details:updateDetails, image: updateImage, price:updatePrice}},(err,result)=> {
         if(err) throw err;
         console.log(result);
-       // res.send("Record updated...."+result);
         if(result.nModified>0){
             res.json({"msg":"REcord updated successfully"})
         }else {

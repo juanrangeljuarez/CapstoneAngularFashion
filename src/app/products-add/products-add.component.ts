@@ -34,17 +34,7 @@ export class ProductsAddComponent implements OnInit {
   }
 
   storeProductDetails(): void{
-    //console.log(this.productRef.code);
     this.productService.addProduct(this.productRef.value).subscribe(data=>this.result=data.msg)
-  }
-
-  Try(): void{
-    console.log(this.productRef.get('image'));
-    this.removeFake();
-  }
-
-  removeFake():void{
-    console.log(document.getElementById('path'));
   }
 
 }

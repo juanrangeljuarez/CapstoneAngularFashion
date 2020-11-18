@@ -1,11 +1,16 @@
 <div class="container">
-    <form [formGroup]="companyRef" (ngSubmit)="storeCompanyDetails()">
-        <label>Company Name</label>
-        <input type="text" formControlName="name"/><br/>
-        <br/>
-        <div class="col text-center">
-            <input type="submit" class="btn btn-secondary" value="Add">
-        </div>
-        
-    </form>
+    <div class="text-center" style="margin-top: 5%;">
+        <h2 style='margin-bottom: 3%;'>Enter Product Information</h2>
+        <form [formGroup]="companyRef" (ngSubmit)="storeCompanyDetails()">
+            <label style='font-size:180%; margin-right: 3%;'>Company Name: </label>
+            <input type="text" formControlName="name"/><br/>
+            <br/>
+            <div class="col text-center">
+                <input type="submit" style='font-size:180%; margin-top: 10%;' class="btn btn-secondary" value="Add Company">
+            </div>          
+        </form>
+    </div>
+    <h3 style="color:#2f00ff">
+        {{result}}
+    </h3>
 </div>

@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="col text-center">
+        <h2>Update Product</h2>
+    </div>
     <div *ngFor="let p of product">
         
         <form [formGroup]="productRef" (ngSubmit)="updateProduct(p._id)">
@@ -32,5 +35,7 @@
             </div>          
         </form>
     </div>
-    <h3>{{result}}</h3>
+    <h3 style="color:#2f00ff">
+        {{result}}
+    </h3>
 </div>

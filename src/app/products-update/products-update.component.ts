@@ -34,7 +34,6 @@ export class ProductsUpdateComponent implements OnInit {
   }
 
   updateProduct(prodId): void{
-     console.log("Update " + prodId);
      this.productService.updateProduct(prodId, this.productRef.value).subscribe(data=>this.result=data.msg)
   }
 

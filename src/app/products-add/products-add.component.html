@@ -1,6 +1,6 @@
 <div class="container">
     <div class="text-center" style="margin-top: 5%;">
-        <h2>Enter Product Information</h2>
+        <h2 style='margin-bottom: 3%;'>Enter Product Information</h2>
         <form [formGroup]="productRef" (ngSubmit)="storeProductDetails()">
             <label style='font-size:180%; margin-right: 3%;'>Product Code:  </label>
             <input type="text" formControlName="code"/><br/>
@@ -15,13 +15,6 @@
             
             <label style='font-size:180%; margin-right: 3%;'>Product Price</label>
             <input type="text" formControlName="price"/><br/>
-            <!--
-            <select formControlName="company">
-         
-                <option *ngFor="let company of companies;">{{company.name}}</option>
-                [(ngModel)]="product.company"
-            </select>
-            -->
             <label style='font-size:180%; margin-right: 3%;'>Select Company</label>
             <select class="selectpicker dropdown form-control" 
                             formControlName="company" data-live-search="true">
@@ -35,8 +28,10 @@
             </div>
             
         </form>
+        <h3 style="color:#2f00ff">
+            {{result}}
+        </h3>
         
-        {{result}}
     
     </div>
     

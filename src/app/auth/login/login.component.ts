@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.loginForm.value)
       .subscribe((token) => {
         this.router.navigate(['/'], { queryParams: { loggedin: 'success' } });
-        console.log("This is the email "+this.loginForm.controls['email'].value);
+        //console.log("This is the email "+this.loginForm.controls['email'].value);
         
        },
         (errorResponse) => {

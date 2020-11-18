@@ -11,8 +11,7 @@ exports.GetCheckoutsFromDb = (req,res)=>{
 
 
 exports.addCheckout = (req,res)=>{
-    console.log("Here" + req);
-    let checkout = new Checkout({    //{pid:106,pname:"Computer",price:56000}
+    let checkout = new Checkout({    
                 total:req.body.total,
                 username: req.body.username
             });

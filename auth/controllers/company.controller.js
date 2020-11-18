@@ -19,14 +19,6 @@ exports.findById = (req, res) => {
     })
 };
 
-// exports.addCompany = (req, res) => {
-//     Company.create(req.body, (err, data) => {
-//         if (err) { throw err; }
-//         res.send(data);
-//     })
-// };
-
-
 
 exports.removeById = (req, res) => {
     Company.findByIdAndRemove(req.params.id, (err, company) => {
@@ -43,7 +35,7 @@ exports.updateById = (req, res) => {
 }
 
 exports.addCompany = (req,res)=>{
-    let company = new Company({    //{pid:106,pname:"Computer",price:56000}
+    let company = new Company({   
                 
                 name:req.body.name
             });
@@ -52,7 +44,6 @@ exports.addCompany = (req,res)=>{
         if(err){
             res.json({"msg":"Id must be unique"});
         } else{
-           // res.send("Record stored successfully in Db");
             res.json({"msg":"Record stored successfully"});     
         }
     });
