@@ -1,34 +1,43 @@
 <div class="container">
-    <form [formGroup]="productRef" (ngSubmit)="storeProductDetails()">
-        <label>Product Code</label>
-        <input type="text" formControlName="code"/><br/>
-        <label>Product Name</label>
-        <input type="text" formControlName="name"/><br/>
-        <label>Product Details</label>
-        <input type="text" formControlName="details"/><br/>
-        <label>Product Image</label>
-        <input type="text" formControlName="image"/><br/>
-        <label>Product Price</label>
-        <input type="text" formControlName="price"/><br/>
-        <!--
-        <select formControlName="company">
-     
-            <option *ngFor="let company of companies;">{{company.name}}</option>
-            [(ngModel)]="product.company"
-        </select>
-        -->
+    <div class="text-center" style="margin-top: 5%;">
+        <h2>Enter Product Information</h2>
+        <form [formGroup]="productRef" (ngSubmit)="storeProductDetails()">
+            <label style='font-size:180%; margin-right: 3%;'>Product Code:  </label>
+            <input type="text" formControlName="code"/><br/>
+            <label style='font-size:180%; margin-right: 3%;'>Product Name:</label>
+            <input type="text" formControlName="name"/><br/>
+            <label style='font-size:180%; margin-right: 3%;'>Product Details:</label>
+            <input type="text" formControlName="details"/><br/>
+            <label style='font-size:180%; margin-right: 3%;'>Product Image</label>
+            <div class="col text-center">
+                <input type="file" style="margin-left: 50%;" class="form-control-file" formControlName="image">
+            </div>
+            
+            <label style='font-size:180%; margin-right: 3%;'>Product Price</label>
+            <input type="text" formControlName="price"/><br/>
+            <!--
+            <select formControlName="company">
+         
+                <option *ngFor="let company of companies;">{{company.name}}</option>
+                [(ngModel)]="product.company"
+            </select>
+            -->
+            <label style='font-size:180%; margin-right: 3%;'>Select Company</label>
+            <select class="selectpicker dropdown form-control" 
+                            formControlName="company" data-live-search="true">
+                            <option *ngFor="let company of companies" [value]="company._id">{{company.name}}</option>
+            </select>
+            
+            <br/>
+            
+            <div class="col text-center">
+                <input type="submit" style='font-size:180%;' class="btn btn-secondary" value="Add product">
+            </div>
+            
+        </form>
         
-        <select class="selectpicker dropdown form-control" 
-                        formControlName="company" data-live-search="true">
-                        <option *ngFor="let company of companies" [value]="company._id">{{company.name}}</option>
-        </select>
-        
-        <br/>
-        
-        <div class="col text-center">
-            <input type="submit" class="btn btn-secondary" value="Add">
-        </div>
-        
-    </form>
-    {{result}}
+        {{result}}
+    
+    </div>
+    
 </div>

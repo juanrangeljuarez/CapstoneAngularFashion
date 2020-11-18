@@ -15,6 +15,7 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
 import { ProductsUpdateComponent } from './products-update/products-update.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductCustomerComponent } from './product-customer/product-customer.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'products-details', component:ProductsDetailsComponent , canActivate:[AuthGuard]},
   { path: 'products-update', component:ProductsUpdateComponent , canActivate:[AuthGuard]},
   { path: 'cart', component:CartComponent , canActivate:[AuthGuard]},
-  { path: 'products-customer', component:ProductCustomerComponent , canActivate:[AuthGuard]}
+  { path: 'products-customer', component:ProductCustomerComponent , canActivate:[AuthGuard]},
+  { path: 'purchase-history', component:PurchaseHistoryComponent , canActivate:[AuthGuard]}
 ];
 
 @NgModule({

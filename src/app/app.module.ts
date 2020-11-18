@@ -19,6 +19,7 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
 import { ProductsUpdateComponent } from './products-update/products-update.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductCustomerComponent } from './product-customer/product-customer.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProductCustomerComponent } from './product-customer/product-customer.co
     ProductsDetailsComponent,
     ProductsUpdateComponent,
     CartComponent,
-    ProductCustomerComponent
+    ProductCustomerComponent,
+    PurchaseHistoryComponent
   ],
   imports: [
     BrowserModule,

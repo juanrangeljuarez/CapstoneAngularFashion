@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { CheckoutService } from './../services/checkout.service';
+import { AuthService } from '../auth/auth.service.js';
+import { Router } from '@angular/router';
 
 
 import { Item } from '../models/Item';
 import { ProductService } from './../services/product.service';
 import { Product } from './../models/product';
+import { Checkout } from './../models/checkout';
 
 @Component({
   selector: 'app-cart',
@@ -16,19 +21,33 @@ export class CartComponent implements OnInit {
   total: number = 0;
   productOriginal: Product;
   flagCart: boolean;
+  flagCheckout: boolean;
+  result: string;
+  checkout: Checkout = new Checkout;
+  checkoutRef = new FormGroup({
+	  total: new FormControl(),
+	  username: new FormControl()
+
+  });
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
-		private productService: ProductService
+		private productService: ProductService,
+		private checoutService: CheckoutService,
+		private auth: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.flagCart = false;
+	this.flagCheckout = false;
+	this.flagCart = false;
     this.activatedRoute.params.subscribe(params => {
-    var id = params['id'];
-      this.productService.getProductById(id).subscribe(data=>this.productOriginal=data);
+		var id = params['id'];
+		if(id){
+			this.productService.getProductById(id).subscribe(data=>this.productOriginal=data);
+		}
+      	
 	});
-	//this.startCart();
 
     
   }
@@ -83,21 +102,16 @@ export class CartComponent implements OnInit {
 
   loadCart(): void {
     this.total = 0;
-    //console.log("Hallo");
 		this.items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
-  //  console.log("CART22 "+cart[0]);
-  //  console.log("CARTPARSE "+ JSON.parse(cart[0]));
 		for (var i = 0; i < cart.length; i++) {
 			cart[i] = cart[i].replace('[','');
 			cart[i] = cart[i].replace(']','');
 			let item = JSON.parse(cart[i]);
-			//console.log("Single Item N "+cart[i]['name']);
 					this.items.push({
 					product: item.product,
 					quantity: item.quantity
       	});
-     // console.log(" Name " + item.product.name + " Quantity " + item.quantity);
 			this.total += item.product?.price * item.quantity;
 		}
   }
@@ -118,13 +132,16 @@ export class CartComponent implements OnInit {
 		}
 		localStorage.setItem("cart", JSON.stringify(cart));
 		this.loadCart();
+		
 	}
 
 	cartInfo:any;
 	checkOut() {
 		let cart: any = JSON.parse(localStorage.getItem('cart'));
 		this.cartInfo= cart;
-		console.log(cart);
+		this.checkoutRef.setValue({total:this.total, username: this.auth.getUsername()});
+		this.checoutService.addCheckoout(this.checkoutRef.value).subscribe(data=>this.result=data.msg);	
+		this.flagCheckout = true;
 	}
 
 }

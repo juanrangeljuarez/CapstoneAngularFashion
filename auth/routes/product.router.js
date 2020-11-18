@@ -7,9 +7,6 @@ module.exports = function (app) {
     app.post("/api/products",products.addProduct);
     app.delete("/api/products/deleteById/:id",products.DeleteProductInfo);
     app.put("/api/products/updateById/:id",products.UpdateProductInfo);
-// router.get("/productInfoById/:id",ProductController.GetProductById);
-// router.post("/storeProduct",ProductController.StoreProductInfo);
-// router.put("/updateProduct",ProductController.UpdateProductInfo);
-// router.delete("/deleteProductById/:id",ProductController.DeleteProductInfo);
+
 
 }

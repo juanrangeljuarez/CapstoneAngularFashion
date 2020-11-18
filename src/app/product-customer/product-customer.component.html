@@ -1,5 +1,6 @@
 <div class="container">
     <br/>
+    <!--
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,5 +25,23 @@
             </tr>
         </tbody>
     </table>
+    -->
+    
+    <div class="row">
+        <div *ngFor="let product of products">
+            <div class="card" style="width: 18rem; margin-top: 40px; margin-right: 40px;">
+                <img class="card-img-top" src="assets/images/{{product.image}}" width="250" height="200">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">{{product.details}}</p>
+                  <p class="card-text">$ {{product.price}}</p>
+                  <input class="btn btn-secondary" type="button" value="Add to Cart" [routerLink]="['/cart', { id:product._id }]">
+                </div>
+              </div>
+        </div>
+        
+    </div>
+    
+    
 </div>
 

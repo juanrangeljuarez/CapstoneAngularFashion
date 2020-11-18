@@ -1,38 +1,56 @@
 <div class="container">
-    <input type="button" value="Load Cart" (click)="startCart()"/>
-<div *ngIf="flagCart">
-    <table border="1">
-        <tr>
-            <th>Action</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        <tr *ngFor="let item of items">
-            <td align="center">
-                <a (click)="remove(item.product._id)">&#10060;</a>
-            </td>
-            <td>{{item.product._id}}</td>
-            <td>{{item.product.name}}</td>
-            <td>
-                <img src="assets/images/{{item.product.image}}" width="250" height="100">
-            </td>  
-            <td>{{item.product.price}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.product.price * item?.quantity}}</td>
-        </tr>
-        <tr>
-            <td colspan="6" align="right">Total</td>
-            <td>{{total}}</td>
-        </tr>
-    </table>
-    <input type="button" value="checkOut" (click)="checkOut()"/>
-
-    {{cartInfo}}
-
-</div>
+    <div *ngIf="!flagCheckout">
+        <br/>
+        <div *ngIf="!flagCart"> 
+            <div class="col text-center">
+                <input type="button" class="btn btn-secondary btn-lg" value="Load Cart" (click)="startCart()"/>
+            </div>
+            
+        </div>
+        <div *ngIf="flagCart">
+            <div class="container">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Action</th>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    <tr *ngFor="let item of items">
+                        <td align="center">
+                            <a (click)="remove(item.product._id)">&#10060;</a>
+                        </td>
+                        <td>{{item.product.name}}</td>
+                        <td>
+                            <img src="assets/images/{{item.product.image}}" width="250" height="200">
+                        </td>  
+                        <td>${{item.product.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>${{item.product.price * item?.quantity}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" align="right">Total</td>
+                        <td>${{total}}</td>
+                    </tr>
+                </table>
+                <div class="col text-center">
+                    <input type="button" class="btn btn-success" value="CheckOut" (click)="checkOut()"/>
+                </div>
+                
+            
+                {{cartInfo}}
+                {{result}}
+                
+            </div>
+        </div>
+    </div>
+    <div *ngIf="flagCheckout">
+        <div class="col text-center">
+            <h2 style="margin-top: 20%;">Thank you. Your order was made. Total: ${{this.total}}</h2>
+        </div>
+    </div>
+    
  </div>   
 

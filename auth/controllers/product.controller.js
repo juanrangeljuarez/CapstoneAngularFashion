@@ -19,13 +19,15 @@ exports.GetProductById = (req,res)=>{
 }
 
 exports.addProduct = (req,res)=>{
-    console.log("Product "+ req.body.company);
+    var imageFile = req.body.image;
+    imageFile = imageFile.substr(imageFile.lastIndexOf("\\")+1);
+
 
     let product = new Product({    //{pid:106,pname:"Computer",price:56000}
                 code:req.body.code,
                 name:req.body.name,
                 details:req.body.details,
-                image:req.body.image,
+                image:imageFile,
                 price:req.body.price,
                 company: req.body.company
             });
@@ -46,7 +48,9 @@ exports.UpdateProductInfo = (req,res)=> {       //{pid:100,pname:"TV 65 inch",pr
     var updateCode = req.body.code;
     var updateName = req.body.name;
     var updateDetails = req.body.details;
-    var updateImage = req.body.image;
+    var imageFile = req.body.image;
+    imageFile = imageFile.substr(imageFile.lastIndexOf("\\")+1);
+    var updateImage = imageFile;
     var updatePrice = req.body.price;
     console.log("ID "+ updateId + " code " + updateCode + " name "+updateName + " details " + updateDetails);
     Product.update({_id:updateId},{$set:{code:updateCode,name:updateName, details:updateDetails, image: updateImage, price:updatePrice}},(err,result)=> {

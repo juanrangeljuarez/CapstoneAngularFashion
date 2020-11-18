@@ -1,6 +1,12 @@
-<nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-inverse navbar-expand-lg" style="background-color: #b7e4c7;">
   <div class="container">
-    <a routerLink="/" class="navbar-brand" routerLinkActive="active">Admin Portal</a>
+    <ng-container *ngIf="auth.getAdmin()">
+      <a routerLink="/" class="navbar-brand" routerLinkActive="active">Admin Portal</a>
+    </ng-container>
+    <ng-container *ngIf="!auth.getAdmin()">
+      <a routerLink="/" class="navbar-brand" routerLinkActive="active">Welcome</a>
+    </ng-container>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="!auth.isAuthenticated()">
@@ -23,6 +29,9 @@
                 <li class="nav-item">
                   <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/purchase-history']">Purchase History</a>
+                </li>
               </ng-container>
               <ng-container *ngIf="!auth.getAdmin()">
                 <li class="nav-item">
@@ -31,13 +40,10 @@
                 <li class="nav-item">
                   <a class="nav-link" [routerLink]="['/cart']">Cart</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['/services']">Services</a>
-                </li>
               </ng-container>
           <li class="nav-item">
             <a class="nav-link">
-              {{ auth.getUsername() }}
+              {{ this.auth.getUsername() }}
             </a>
           </li>
           <li class="nav-item">

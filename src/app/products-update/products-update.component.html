@@ -1,13 +1,14 @@
 <div class="container">
     <div *ngFor="let p of product">
+        
         <form [formGroup]="productRef" (ngSubmit)="updateProduct(p._id)">
             <div class="text-center" style="margin-top: 5%;">
                 <label><b>Currect Code: </b></label>{{p.code}}<br/>
-                <label><b>New Code: </b></label><input type="text" formControlName="code"/><br/>  
+                <label><b>New Code: </b></label><input  value="DS" type="text" formControlName="code"/><br/>  
             </div>
             <div class="text-center" style="margin-top: 5%;">
                 <label><b>Current Name: </b></label>{{p.name}}<br/>
-                <label><b>New Name: </b></label><input type="text" formControlName="name"/><br/>  
+                <label><b>New Name: </b></label><input value="Ki" type="text" formControlName="name"/><br/>  
             </div>
             <div class="text-center" style="margin-top: 5%;">
                 <label><b>Current Details: </b></label>{{p.details}}<br/>
@@ -16,10 +17,14 @@
             <div class="text-center" style="margin-top: 5%;">
                 <label><b>Current Price: </b>$</label>{{p.price}}<br/>
                 <label><b>New Price: </b></label><input type="text" formControlName="price"/><br/>  
+                
             </div>
             <div class="text-center" style="margin-top: 5%;">
-                <label><b>Current Image: </b>$</label>{{p.image}}<br/>
-                <label><b>New image: </b></label><input type="text" formControlName="image"/><br/>  
+                <label><b>Current Image: </b></label><img src="assets/images/{{p.image}}" width="350" height="150"><br/>
+                <label><b>New image: </b></label>
+                <div class="col text-center">
+                    <input type="file" style="margin-left: 50%;" class="form-control-file" formControlName="image">
+            </div>
             </div>  
             <br/>
             <div class="col text-center">
@@ -27,5 +32,5 @@
             </div>          
         </form>
     </div>
-    {{result}}
+    <h3>{{result}}</h3>
 </div>

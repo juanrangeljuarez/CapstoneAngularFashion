@@ -1,0 +1,19 @@
+<div class="container">
+    <br/>
+    <h2>Purchase History</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let checkout of checkouts;let rowIndex=index">
+                <td>{{checkout.username}}</td>
+                <td>$ {{checkout.total}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

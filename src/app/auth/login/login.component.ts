@@ -50,14 +50,7 @@ export class LoginComponent implements OnInit {
       .subscribe((token) => {
         this.router.navigate(['/'], { queryParams: { loggedin: 'success' } });
         console.log("This is the email "+this.loginForm.controls['email'].value);
-        if(this.loginForm.controls['email'].value == 'admin@gmail.com'){
-          console.log('You are admin');
-          this.auth.setAdmin(true);
-        }
-        else{
-          console.log('You are customer');
-          this.auth.setAdmin(false);
-        }
+        
        },
         (errorResponse) => {
           this.errors.push(errorResponse.error.error);
